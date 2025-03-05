@@ -1,6 +1,9 @@
-------------------------
-Boilerplate with Flavors
-------------------------
+
+**<Note:>** This branch does not contain code for flavors, to use flavors checkout to **flavors** branch.
+
+---------------------------
+Boilerplate without Flavors
+---------------------------
 
 -   **assets**  
 
@@ -8,7 +11,7 @@ Boilerplate with Flavors
 
     -   This folder will keep all the local resources that we will use in our application. It can further contain subcategories like "fonts", "images" etc having the corresponding folders.
 
--   To make use of the contents of this folder we need to define it in pubspec.yaml.\
+    -   To make use of the contents of this folder we need to define it in pubspec.yaml.\
 ![](https://lh7-us.googleusercontent.com/BDVqACb4gUg_bC4v_dPyoKL9R7qjdb60ubbB5hUQFT0adO8DZI5Quokrkijv2YZOpSAhs3YhKoMa1sxanl_D4uLYUIYxbTZBntO5NxKmPfchoNNMI_Z6pqdRi3TbJ9kfD1QDOnTevW9AzHWn1YfsR7Y)
 
 -   **lib**
@@ -17,41 +20,41 @@ Boilerplate with Flavors
 
     -   This is the most important folder in a flutter project, everything that we code will sit here in most cases, if we are not using any platform-specific or native coding in our flutter application.
 
-    -   "Here we will not have a main.dart file. We will have a folder named flavors, we will look into it in more detail in coming steps."
+    -   It will contain the main entry point of a flutter application which is the "main.dart" file, although it does not remain the main entry point when we are using flavors in our app, that we will see later while implementing flavors.
 
--   This boilerplate will contain following subcategories in lib folder:
+    -   This boilerplate will contain following subcategories in lib folder:
 
-    -   **constants**
+        -   **constants**
 
-    -   **controllers**
+        -   **controllers**
 
-    -   **i18n**
+        -   **i18n**
 
-    -   **models**
+        -   **models**
 
-    -   **router**
+        -   **router**
 
-    -   **store**
+        -   **store**
 
-    -   **theme**
+        -   **theme**
 
-    -   **utils**
+        -   **utils**
 
-    -   **viewmodel**
+        -   **viewmodel**
 
-    -   **views**
+        -   **views**
 
-    -   **flavors**
+        -   **main.dart**
 
-![](https://lh7-us.googleusercontent.com/F2SmKZJXt4BwENVW2WGoPTTGh3JsGAGfGFuEt9odYeIEMLppEjPDMB5CvIDsvJTajOzT7vmLNYzTXz6r-BaW34TVRk9qSdLH53mesrqPBvvk2CLDiTKJ-Qb-elzxdUsFGT44GiwktGprM7SrFLqPFDY)
+![](https://lh7-us.googleusercontent.com/mdDlla5Obi7NQpvzHIRtayUC-EHp_KkCMA1zOLh2EcZSyRdWvomJ_9p23Ztxt4qMF_A1bo1EZIui0wyTLcsi9IUNOMi1sF1ybRbs4mHQm55M0258OxnF0r8AgnJOoAd6oOHVPfT7FzNNkQdoSS6TMjc)
 
 Let us understand one by one what each folder is going to do:
 
 -   ### Constants 
 
--   This folder will contain all the constants that we will be using in our application.
+     -   This folder will contain all the constants that we will be using in our application.
 
--   It can be subcategorized into categories like api constants, string constants, message constants, enums etc.
+    -   It can be subcategorized into categories like api constants, string constants, message constants, enums etc.
 
 ![](https://lh7-us.googleusercontent.com/3EqvrUdpMm150OA4syX-RtbWIxCkyjE0wXSXcAtPKMyTFtap8yGmUtfsH1heVEGRBS1O3yBaH7iC2XvFwdfZlnp9bOMf1Zqwe-GtUsGuE3lIRp8u8Or-9sptZvd4gcZ38ZcBvnBhnJqeO0ZQCl1sHTU)
 
@@ -117,90 +120,7 @@ Let us understand one by one what each folder is going to do:
 
     -   Widgets folder will contain common UI elements that will be used in the entire application or entire module of the project.
 
--   ### flavors
+-   ### main.dart
 
-    -   While using flavors, we will make use of this folder.
+    -   The main entry point of a flutter application which is the "main.dart" file, although it does not remain the main entry point when we are using flavors in our app, that we will see later while implementing flavors.
 
-    -   It will contain one main_common.dart file that will have the code with MaterialApp, it is the main entry point of our project, but it won't have runApp() method called in here.
-
-    -   Now comes the interesting part, each flavor will have its own file, say prod environment will have a file main_prod.dart and here runApp() will be called by passing the class that we created in main_common.dart.
-
-### Handling Flavors
-
-#### Running application while using flavors
-
-   - Using command
-
-        -   Simple flutter run won't work out in the case of flavors. We will need to call the following command to run our app. 
-
-        -   flutter run --flavor flavor_name -t corresponding_main_flavor_file_path
-
-        -   E.g. flutter run --flavor qa -t lib/flavors/main_qa.dart
-
-   -   Via VS Code
-
-        -   In this boilerplate launch.json file has been configured with three flavors, prod, dev and qa.
-
-        -   So in the located section there will be option to choose from any flavor, as shown below
-
-![](https://lh7-us.googleusercontent.com/efMUc3akDpAQVoRRoiPiN_wJPS2KNPZ6wkyGFgsnkNs0WgkYt4yjIW0FNp2T6EtyjTy3JHCcvnj1mro6bcqXpTUWN6mbj70-y09eLvW_GScP3KcLkvV63gSlvPwD-dJz4TpeGCUucuyigm_qeUyZn90)
-
-   -   Creating Build via command
-
-        -   Simple flutter build apk won't work out in case of flavors. We will need to call the following command to build an android apk. 
-
-        -   flutter build apk --release --flavor flavor_name -t corresponding_main_flavor_file_path or
-
-        -   flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols --flavor flavor_name -t corresponding_main_flavor_file_path
-
-        -   E.g. flutter build apk --release --flavor qa -t lib/flavors/main_qa.dart or
-
-        -   flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols --flavor qa -t lib/flavors/main_qa.dart
-
-   -   Adding/deleting flavors
-
-        -   Android
-
-            -   Just add/remove the object for your flavor in android/app/build.gradle as follows,\
-![](https://lh7-us.googleusercontent.com/CTamBcXzqJzZ9n1KeQiQfrTFgCclCcBs8NgtPranNgWqA4CB3y_ZUPNOm8fkz059eQBSGqRasRKT7aCdvW2wcdVKP-f5pJCKuWZ6oxHLBP6HANtM17HuuJLffP-_OLK-qTSnhUV7XLiipiZAuVi86JQ)
-
-        -   VS Code
-
-            -   Just add / remove the flavor object from .vscode/launch.json as follows:
-
-![](https://lh7-us.googleusercontent.com/nQWm96bcAEoeIv5Ew_vH-qY53zI5yc-_Kmbp7e5lB9f45dIpsnp9xtGdjOU0hmm3JDlXubl8y9mdfk2yMzZKEBPNNkkWU1chUtWHkTNXM_G4olmaLU43HPffNL2aANZF7MZYfGytIFn7O-C-pwbN_sw)
-
--   iOS
-
-      -   Adding or removing flavors from iOS will take a few setup, let's see how we can add a new flavor or edit the existing one for iOS.
-
-      -   Open XCode for your project > Product > Scheme > Manage Scheme
-
-![](https://lh7-us.googleusercontent.com/qcNKzJc1KaqKaVGvjEJV408l-WNVMlW7xAJ8bcfpBHy9lnV6wHsFuEc-JV3WV24IOvZT3pOY9YqWEsXAy-qKNoSH9LQ_KaKfwUkqviYgBc5oB-dGBWJ_3PVIlRkGxp85R7LXhu9OarQ6O85CimNlZOQ)
-
-
-    -  This will show all the existing flavors that we are using this boilerplate, we can delete any flavor from here if not required by clicking on "-" and can add a new one by clicking on "+".
-
-      -   While adding a new flavor from here, make sure to select the target as "Runner" only.
-
-![](https://lh7-us.googleusercontent.com/wwA_1UBtx3p4pDHGVFGp4aFU-I17gw3Io1a0n3WYikQPr9fuUUIR_iPhmdycCYajYq_DSF4sBo3ypmXrtbS7ts9AomlyLT9MLfzSlpMbof4izqr6CqygFI3pHRdWct6KNhicyLJY9xT94Y9AES3YC10)
-
-
-      -   Once the scheme (flavor) is added we will need to make a few more changes.
-
-![](https://lh7-us.googleusercontent.com/YWenK-EEFcInPttzCoBhwNhmBAEmM7ts3KcSRjca-MW223339GY4jPRpM9toOI5PK68I6oythNHXOwp1LGkTpb3SNdFxq-2wn_TKAT3FrCS23ovcbnrkHSp4k7d0QdfODMWFJklQVe8FTQnaDIGgNX4)
-
-      -   Go to Project Runner > Info & add debug, profile and release as per the name of the scheme. E.g. Debug-flavorname, Profile-flavorname & Release-flavorname.
-
-![](https://lh7-us.googleusercontent.com/7cr8xckW90mWvVrkvMkkPdt5NWkoKAMUX3YwhDg6GEq2AUrnbjq0BNeHNAlhHrMT48tmTZwIfhHsaK8V9XhE1Z18BGYobNW_5oNhvbu2VaT1PXtqAawRM9leUKZeZ05UtGTOqsWxfaEMTuHwcJ2YqxY)
-
-      -   Go to Target Runner > Build Setting & change the display name of app as per different flavors, if required.
-
-![](https://lh7-us.googleusercontent.com/Yzm_ykjfjjfrLXMeXvh2NaAaRXDoKSy46242K69mgP0stj_aav_zwPmY0p-W9XKNUpn-cMIcCeqXx25PRbhKoSq3-rtYaFLxKNKHUcEBCPcOBDTfGJVPqvGuMN0NoixHfqsbUN0JWIVb_ql3gTAAUHM)
-
-      -   Open XCode for your project > Product > Scheme > Edit Scheme and add the respective configuration file for the flavor.
-
-![](https://lh7-us.googleusercontent.com/DgTd_T75FqZ52Tp2DR9LtDAxKSxHPGc-OfHDuMftc9FddG-qWVDsH_2mFalyUfCD5BykTTRtD4-BW7oBvs0X398I5Yl4IW0f-rxpox22hElJB2BSlh1FlBDx12PYL0OR8NjbHSxIGMG6L2T0EfLoBkA)
-
-
-# Flutter-Boilerplate

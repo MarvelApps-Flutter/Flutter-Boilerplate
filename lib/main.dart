@@ -4,9 +4,12 @@ import 'package:flutter_boilerplate/viewmodels/material_app_viewmodel.dart';
 import 'package:flutter_boilerplate/views/screens/base_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:localization/localization.dart';
+import 'router/app_router.dart';
+import 'views/screens/demo_home_page.dart';
 
-import '../router/app_router.dart';
-import '../views/screens/demo_home_page.dart';
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
