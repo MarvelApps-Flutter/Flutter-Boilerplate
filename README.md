@@ -1,3 +1,5 @@
+**<Note:>** This branch contains code for flavors, to use boilerplate without flavors checkout to **withoutFlavors** branch.
+
 ------------------------
 Boilerplate with Flavors
 ------------------------
