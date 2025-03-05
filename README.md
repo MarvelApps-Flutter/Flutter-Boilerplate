@@ -1,6 +1,3 @@
-**<Note:>** To use boilerplate without flavors, checkout to **dev** branch.
-
-
 ------------------------
 Boilerplate with Flavors
 ------------------------
